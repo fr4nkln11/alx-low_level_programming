@@ -4,9 +4,7 @@
  * main - Entry point
  *
  * Description: "solution for
- * I sometimes suffer from insomnia.
- * And when I can't fall asleep,
- * I play what I call the alphabet game"
+ * Hexadecimal"
  *
  * Return: Always 0 (Success)
  */
@@ -19,7 +17,7 @@ int main(void)
 	{
 		putchar(alphabet);
 	}
-	
+
 	for (alphabet = 'a'; alphabet <= 'f'; alphabet++)
 	{
 		putchar(alphabet);
