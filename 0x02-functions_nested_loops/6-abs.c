@@ -2,7 +2,7 @@
 
 /**
  * _abs - function that computes the absolute value of an integer
- * @n - integer value
+ * @int: integer value
  *
  * Return: absolute value of the integer
  */
@@ -11,10 +11,10 @@ int _abs(int)
 {
 	if (n < 0)
 	{
-		return (n**2)
+		return (n * n);
 	}
 	else
 	{
-		return (n)
+		return (n);
 	}
 }
