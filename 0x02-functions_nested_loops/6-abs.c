@@ -2,12 +2,12 @@
 
 /**
  * _abs - function that computes the absolute value of an integer
- * @int: integer value
+ * @n: integer value
  *
  * Return: absolute value of the integer
  */
 
-int _abs(int)
+int _abs(int n)
 {
 	if (n < 0)
 	{
