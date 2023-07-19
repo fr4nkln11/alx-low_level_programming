@@ -11,11 +11,11 @@ void print_times_table(int n)
 {
 	int i, j;
 
-	for (i = 0; i < n; i++)
+	for (i = 0; i < n + 1; i++)
 	{
 		_putchar('0');
 
-		for (j = 1; j < n; j++)
+		for (j = 1; j < n + 1; j++)
 		{
 			int product = i * j;
 
