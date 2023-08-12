@@ -20,9 +20,10 @@ char *cap_string(char *s)
 
 		/* check if previous character is a non letter*/
 		if (
-		!((prev_char > 64 && prev_char < 91)
+		(!((prev_char > 64 && prev_char < 91)
 			|| (prev_char > 96 && prev_char < 123))
-		&& !(prev_char > 47 && prev_char < 58)
+		&& !(prev_char > 47 && prev_char < 58))
+		|| (prev_char == 45)
 		)
 		{
 			if (current_char > 96 && current_char < 123)
