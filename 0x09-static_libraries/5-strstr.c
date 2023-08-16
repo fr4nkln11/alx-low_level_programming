@@ -1,5 +1,5 @@
 #include "main.h"
 
-unsigned int _strspn(char *s, char *accept)
+char *_strstr(char *haystack, char *needle)
 {
 }
