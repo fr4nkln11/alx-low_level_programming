@@ -23,13 +23,13 @@ int main(int argc, char *argv[])
 	if (argc != 4)
 	{
 		printf("Error\n");
-		return (98);
+		exit(98);
 	}
 
 	if ((*operator == '/' || *operator == '%') && second == 0)
 	{
 		printf("Error\n");
-		return (100);
+		exit(100);
 	}
 
 	if (get_op_func(operator))
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 	else
 	{
 		printf("Error\n");
-		return (99);
+		exit(99);
 	}
 
 }
