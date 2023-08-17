@@ -39,11 +39,6 @@ int main(int argc, char *argv[])
 		printf("%d\n", result);
 		return (0);
 	}
-	else if (*(operator + 1) != '\0')
-	{
-		printf("Error\n");
-		exit(99);
-	}
 	else
 	{
 		printf("Error\n");
