@@ -49,7 +49,12 @@ void print_opcodes(unsigned char *bytes, int length)
 
 	for (i = 0; i < length; i++)
 	{
-		printf("%02x ", bytes[i]);
+		if (i > 0)
+		{
+			putchar(' ');
+		}
+		printf("%02x", bytes[i]);
 	}
-	printf("\n");
+
+	putchar('\n');
 }
