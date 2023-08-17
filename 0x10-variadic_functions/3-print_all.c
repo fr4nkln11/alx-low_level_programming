@@ -55,7 +55,7 @@ void print_spec(va_list arg_ptr, char spec)
 {
 	int integer;
 	char character;
-	float floating;
+	double floating;
 	char *string;
 
 	switch (spec)
@@ -71,7 +71,7 @@ void print_spec(va_list arg_ptr, char spec)
 			break;
 
 		case 'f':
-			floating = (float)va_arg(arg_ptr, double);
+			floating = va_arg(arg_ptr, double);
 			printf("%f", floating);
 			break;
 
