@@ -15,16 +15,18 @@
 
 int main(int argc, char *argv[])
 {
-	int first = atoi(argv[1]);
-	int second = atoi(argv[3]);
-	char *operator = argv[2];
-	int result;
+	int first, second, result;
+	char *operator;
 
 	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
 	}
+
+	first = atoi(argv[1]);
+	second = atoi(argv[3]);
+	operator = argv[2];
 
 	if ((*operator == '/' || *operator == '%') && second == 0)
 	{
