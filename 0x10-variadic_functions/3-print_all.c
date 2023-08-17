@@ -71,7 +71,7 @@ void print_spec(va_list arg_ptr, char spec, int separator)
 
 		case 'f':
 			floating = (float)va_arg(arg_ptr, double);
-			printf("%f", floating);
+			printf("%.2f", floating);
 			break;
 
 		case 's':
