@@ -59,6 +59,7 @@ int count_coins(int cents)
 			{
 				cents -= coins[i];
 				coin_num++;
+				break;
 			}
 		}
 	}
