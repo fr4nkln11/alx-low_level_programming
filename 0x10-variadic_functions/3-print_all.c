@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include "variadic_functions.h"
 
-void print_spec(va_list arg_ptr, char spec, int separator);
+void print_spec(va_list arg_ptr, char spec);
 
 /**
  * print_all - a function that prints anything.
@@ -21,9 +21,12 @@ void print_all(const char * const format, ...)
 
 		va_start(arg_ptr, format);
 		index = 0;
+		print_spec(arg_ptr, *(format + index));
+		index++;
 		while (*(format + index) != '\0')
 		{
-			print_spec(arg_ptr, *(format + index), index);
+			printf(", ");
+			print_spec(arg_ptr, *(format + index));
 			index++;
 		}
 
@@ -37,29 +40,16 @@ void print_all(const char * const format, ...)
  * based on the format specifier
  * @arg_ptr: argument pointer
  * @spec: format specifier
- * @separator: tells whether to add separator or not
  *
  * Return: nothing
  */
 
-void print_spec(va_list arg_ptr, char spec, int separator)
+void print_spec(va_list arg_ptr, char spec)
 {
 	int integer;
 	char character;
 	float floating;
 	char *string;
-
-	switch (spec)
-	{
-		case 'c':
-		case 'i':
-		case 'f':
-		case 's':
-			if (separator != 0)
-			{
-				printf(", ");
-			}
-	}
 
 	switch (spec)
 	{
