@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
 		result = get_op_func(operator)(first, second);
 
 		printf("%d\n", result);
+		return (0);
 	}
 	else
 	{
