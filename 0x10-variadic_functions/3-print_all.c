@@ -20,12 +20,19 @@ void print_all(const char * const format, ...)
 		va_list arg_ptr;
 
 		va_start(arg_ptr, format);
-		index = 0;
-		print_spec(arg_ptr, *(format + index));
-		index++;
+		print_spec(arg_ptr, *format);
+
+		index = 1;
 		while (*(format + index) != '\0')
 		{
-			printf(", ");
+			switch (*(format + index))
+			{
+				case 'c':
+				case 'i':
+				case 'f':
+				case 's':
+					printf(", ");
+			}
 			print_spec(arg_ptr, *(format + index));
 			index++;
 		}
