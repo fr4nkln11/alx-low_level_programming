@@ -26,6 +26,12 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
+	if (*(operator + 1) != '\0')
+	{
+		printf("Error\n");
+		exit(99);
+	}
+
 	if ((*operator == '/' || *operator == '%') && second == 0)
 	{
 		printf("Error\n");
