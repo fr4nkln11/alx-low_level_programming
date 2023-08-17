@@ -13,19 +13,23 @@ void print_spec(va_list arg_ptr, char spec, int separator);
 
 void print_all(const char * const format, ...)
 {
-	int index;
-	va_list arg_ptr;
-
-	va_start(arg_ptr, format);
-	index = 0;
-	while (*(format + index) != '\0')
+	if (format != NULL)
 	{
-		print_spec(arg_ptr, *(format + index), index);
-		index++;
-	}
+		int index;
 
-	va_end(arg_ptr);
-	printf("\n");
+		va_list arg_ptr;
+
+		va_start(arg_ptr, format);
+		index = 0;
+		while (*(format + index) != '\0')
+		{
+			print_spec(arg_ptr, *(format + index), index);
+			index++;
+		}
+
+		va_end(arg_ptr);
+		printf("\n");
+	}
 }
 
 /**
