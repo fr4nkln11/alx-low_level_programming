@@ -20,9 +20,26 @@ void print_all(const char * const format, ...)
 		va_list arg_ptr;
 
 		va_start(arg_ptr, format);
-		print_spec(arg_ptr, *format);
 
-		index = 1;
+		index = 0;
+		while (*(format + index) != '\0')
+		{
+			switch (*(format + index))
+			{
+				case 'c':
+				case 'i':
+				case 'f':
+				case 's':
+					print_spec(arg_ptr, *(format + index));
+					index++;
+					break;
+				default:
+					index++;
+					continue;
+			}
+			break;
+		}
+
 		while (*(format + index) != '\0')
 		{
 			switch (*(format + index))
@@ -32,14 +49,16 @@ void print_all(const char * const format, ...)
 				case 'f':
 				case 's':
 					printf(", ");
+					print_spec(arg_ptr, *(format + index));
+				default:
+					break;
 			}
-			print_spec(arg_ptr, *(format + index));
 			index++;
 		}
 
 		va_end(arg_ptr);
-		printf("\n");
 	}
+	printf("\n");
 }
 
 /**
@@ -84,7 +103,6 @@ void print_spec(va_list arg_ptr, char spec)
 			}
 			printf("%s", string);
 			break;
-
 		default:
 			break;
 	}
