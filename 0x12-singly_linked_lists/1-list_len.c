@@ -10,7 +10,7 @@
 
 size_t list_len(const list_t *h)
 {
-	size_t length;
+	size_t length = 0;
 	const list_t *cursor = h;
 
 	if (h == NULL)
