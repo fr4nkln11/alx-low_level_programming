@@ -20,10 +20,9 @@ int pop_listint(listint_t **head)
 		if (*head)
 		{
 			temp_node = (*head)->next;
+			data = (*head)->n;
 			free(*head);
 			*head = temp_node;
-
-			data = (*head)->n;
 		}
 	}
 
