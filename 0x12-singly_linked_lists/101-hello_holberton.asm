@@ -11,4 +11,4 @@ section .text
 
 section .data
 	string:
-		db "Hello, Holbertom", 0x0a, 0x00
+		db "Hello, Holberton", 0x0a, 0x00
