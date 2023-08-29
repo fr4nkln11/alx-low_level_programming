@@ -6,6 +6,7 @@ section .text
 		sub rsp, 8
 		mov rdi, string
 		call printf
+		mov rax, 0
 		add rsp, 8
 		ret
 
