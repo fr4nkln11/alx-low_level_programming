@@ -1,6 +1,8 @@
 #include "lists.h"
 #include <stdlib.h>
 
+listint_t *get_node(listint_t *head, unsigned int idx);
+
 /**
  * insert_nodeint_at_index - a function that inserts
  * a new node at a given position.
@@ -18,39 +20,74 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		if (*head)
 		{
 			listint_t *new_node;
+			listint_t *temp_node;
 			listint_t *post_node;
 			listint_t *pre_node;
-			listint_t *cursor;
-			unsigned int i = 0;
 
-			cursor = *head;
 			new_node = (listint_t *)malloc(sizeof(listint_t));
 
 			if (!new_node)
 			{
 				return (NULL);
 			}
-			new_node->n = n;
-			while (cursor)
-			{
-				if (i == (idx - 1))
-				{
-					break;
-				}
-				else
-				{
-					cursor = cursor->next;
-					i++;
-				}
-			}
-			pre_node = cursor;
-			post_node = cursor->next;
 
-			pre_node->next = new_node;
-			new_node->next = post_node;
+			new_node->n = n;
+
+			if (idx > 0)
+			{
+				pre_node = get_node(*head, (idx - 1));
+				post_node = pre_node->next;
+				pre_node->next = new_node;
+				new_node->next = post_node;
+			}
+			else
+			{
+				temp_node = (*head)->next;
+				*head = new_node;
+				(*head)->next = temp_node;
+			}
 
 			return (new_node);
 		}
 	}
 	return (NULL);
+}
+
+/**
+ * get_node - a function that returns
+ * the nth node of a listint_t linked list
+ * @head: pointer to the head node
+ * @idx: the position of the node
+ *
+ * Return: an address to the nth node
+ */
+
+listint_t *get_node(listint_t *head, unsigned int idx)
+{
+	if (head)
+	{
+		listint_t *cursor;
+		unsigned int i = 0;
+
+		cursor = head;
+
+		while (cursor)
+		{
+			if (i == idx)
+			{
+				break;
+			}
+			else
+			{
+				cursor = cursor->next;
+				i++;
+			}
+		}
+
+		return (cursor);
+	}
+	else
+	{
+		return (NULL);
+	}
 }
