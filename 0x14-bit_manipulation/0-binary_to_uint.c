@@ -18,29 +18,30 @@ unsigned int binary_to_uint(const char *b)
 	decimal = 0;
 	length = 0;
 	k = 0;
-
-	while (*(b + length))
+	if (b)
 	{
-		length++;
+		while (*(b + length))
+		{
+			length++;
+		}
+
+		for (i = (length - 1); i >= 0; i--)
+		{
+			if (*(b + i) == '1')
+			{
+				decimal += 1 << k;
+			}
+			else if (*(b + i) == '0')
+			{
+				decimal += 0 << k;
+			}
+			else
+			{
+				return (0);
+			}
+
+			k++;
+		}
 	}
-
-	for (i = (length - 1); i >= 0; i--)
-	{
-		if (*(b + i) == '1')
-		{
-			decimal += 1 << k;
-		}
-		else if (*(b + i) == '0')
-		{
-			decimal += 0 << k;
-		}
-		else
-		{
-			return (0);
-		}
-
-		k++;
-	}
-
 	return (decimal);
 }
