@@ -7,7 +7,6 @@
  *
  * Return: 1 if it worked, or -1 if an error occurred
  */
-
 int clear_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned int bit_range;
@@ -26,3 +25,4 @@ int clear_bit(unsigned long int *n, unsigned int index)
 	}
 	return (1);
 }
+
