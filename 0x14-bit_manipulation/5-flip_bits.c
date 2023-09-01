@@ -11,7 +11,7 @@
 
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	int xor_mask;
+	unsigned long int xor_mask;
 	int bit_count;
 
 	xor_mask = n ^ m;
