@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * set_bit - a function that sets the value of a bit to 1 at a given index.
@@ -10,13 +11,13 @@
 
 int set_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned int bit_range = sizeof(unsigned long int);
-	unsigned long int mask = 1;
+	unsigned int bit_range = sizeof(unsigned long int) * 8;
+	unsigned long int mask;
 
 	if (index <= bit_range)
 	{
-		mask <<= index;
-		*n |= mask;
+		mask = 1 << index;
+		*n = *n | mask;
 
 		return (1);
 	}
