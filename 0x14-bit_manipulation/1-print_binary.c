@@ -1,35 +1,3 @@
-/**
- * print_base_digit - print a string of digits for a specific base
- * @number: the number to be printed
- * @base: the base for the number to be printed
- *
- * Return: number of digits printed
- */
-
-/*
-int print_base_digit(long number, int base)
-{
-	int digit_count;
-	char *digits;
-
-	digits = "0123456789";
-
-	if (number < 0)
-	{
-		return (write(1, "-", 1) + print_base_digit(-number, base));
-	}
-	else if (number < base)
-	{
-		return (print_char(digits[number]));
-	}
-	else
-	{
-		digit_count = print_base_digit(number / base, base);
-		return (digit_count + print_base_digit(number % base, base));
-	}
-}
-*/
-
 #include "main.h"
 
 /**
@@ -41,15 +9,31 @@ int print_base_digit(long number, int base)
 
 void print_binary(unsigned long int n)
 {
-	char *bin_digits = "01";
+	int bitsize = (sizeof(unsigned long int) * 8);
+	int counter;
+	int mask;
+	int start_flag = 0;
 
-	if (n < 2)
+	for (counter = (bitsize - 1); counter >= 0; counter--)
 	{
-		_putchar(*(bin_digits + n));
-	}
-	else
-	{
-		print_binary(n / 2);
-		print_binary(n % 2);
+		mask = n >> counter;
+
+		if (counter == 0 && !start_flag)
+		{
+			start_flag = 1;
+		}
+
+		if (mask & 1)
+		{
+			start_flag = 1;
+			_putchar('1');
+		}
+		else
+		{
+			if (start_flag)
+			{
+				_putchar('0');
+			}
+		}
 	}
 }
