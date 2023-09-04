@@ -18,7 +18,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 			buffer[read_size] = '\0';
 
 			write_size = write(1, buffer, read_size);
-			if (write_size > 0)
+			if (write_size > 0 && write_size == read_size)
 			{
 				return (write_size);
 			}
