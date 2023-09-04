@@ -1,6 +1,5 @@
 #include "main.h"
 #include <fcntl.h>
-#include <stddef.h>
 #include <unistd.h>
 
 /**
@@ -33,7 +32,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 			}
 			buffer[read_size] = '\0';
 
-			write_size = write(STDOUT_FILENO, buffer, read_size);
+			write_size = write(1, buffer, read_size);
 			if (write_size > 0 && write_size == read_size)
 			{
 				return (write_size);
