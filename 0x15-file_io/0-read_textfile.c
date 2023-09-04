@@ -1,6 +1,7 @@
 #include "main.h"
 #include <fcntl.h>
 #include <stddef.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 /**
@@ -19,27 +20,33 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int file_descriptor;
 	int write_size, read_size;
-	char buffer[2048];
+	char *buffer;
 
-	if (filename)
+	if (filename != NULL)
 	{
+		buffer = (char *)malloc(letters + 1);
 		file_descriptor = open(filename, O_RDONLY);
-		if (file_descriptor > 0)
-		{
-			read_size = read(file_descriptor, buffer, letters);
-			if (read_size < 0)
-			{
-				return (0);
-			}
-			buffer[read_size] = '\0';
 
-			write_size = write(STDOUT_FILENO, buffer, read_size);
-			if (write_size > 0 && write_size == read_size)
-			{
-				return (write_size);
-			}
-			close(file_descriptor);
+		if (file_descriptor < 0)
+		{
+			return (0);
 		}
+		read_size = read(file_descriptor, buffer, letters);
+		if (read_size < 0)
+		{
+			return (0);
+		}
+		buffer[read_size] = '\0';
+
+		write_size = write(STDOUT_FILENO, buffer, read_size);
+		if (write_size < 0 || (write_size != read_size))
+		{
+			return (0);
+		}
+
+		free(buffer);
+		close(file_descriptor);
+		return (write_size);
 	}
 
 	return (0);
