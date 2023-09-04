@@ -1,6 +1,5 @@
 #include "main.h"
 #include <fcntl.h>
-#include <limits.h>
 #include <stddef.h>
 #include <unistd.h>
 
@@ -20,7 +19,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int file_descriptor;
 	size_t write_size, read_size;
-	char buffer[INT_MAX];
+	char buffer[5555];
 
 	if (filename)
 	{
