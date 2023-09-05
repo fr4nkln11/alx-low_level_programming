@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 
@@ -35,13 +35,13 @@ int main(int argc, char *argv[])
 
 	if (source_file_descriptor < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s", source_filename);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", source_filename);
 		exit(98);
 	}
 
 	if (dest_file_descriptor < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s", dest_filename);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest_filename);
 		exit(99);
 	}
 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 		write_size = write(dest_file_descriptor, buffer, read_size);
 		if (write_size < 0)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s", dest_filename);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest_filename);
 			exit(99);
 		}
 		free(buffer);
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 	free(buffer);
 	if (read_size < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s", source_filename);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", source_filename);
 		exit(98);
 	}
 
@@ -80,13 +80,13 @@ void close_files(int source_fd, int dest_fd)
 {
 	if (close(source_fd) < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d", source_fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", source_fd);
 		exit(100);
 	}
 
 	if (close(dest_fd) < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d", dest_fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", dest_fd);
 		exit(100);
 	}
 }
