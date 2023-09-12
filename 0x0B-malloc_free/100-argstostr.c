@@ -55,6 +55,13 @@ char *argstostr(int ac, char **av)
 	return (NULL);
 }
 
+/**
+ * string_length - a function that returns a strings length
+ * @string: string to check
+ *
+ * Return: an integer that represents the length of string
+ */
+
 int string_length(char *string)
 {
 	int index = 0;
