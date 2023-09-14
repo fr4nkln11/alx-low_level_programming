@@ -2,28 +2,24 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int get_token_count(char *s);
-int get_token_length(char *s);
+/**
+ * strtow - a function that splits a string into words.
+ * @str: the string to split
+ *
+ * Return: a pointer to an array of strings (words)
+ */
 
 char **strtow(char *str)
 {
 	char **tokens = NULL;
 	char *current_token = NULL;
-	int token_index = 0;
-	int token_length;
-	int token_pos;
-	int token_count;
+	int token_index = 0, token_length, token_pos, token_count;
 
 	if (!str)
-	{
 		return (NULL);
-	}
-
 	token_count = get_token_count(str);
-
 	if (token_count == 0)
 		return (NULL);
-
 	tokens = malloc(sizeof(char *) * (token_count + 1));
 	if (tokens)
 	{
@@ -32,9 +28,7 @@ char **strtow(char *str)
 			token_length = get_token_length(str);
 			tokens[token_index] = (char *)malloc(sizeof(char) * token_length);
 			if (!tokens[token_index])
-			{
 				return (NULL);
-			}
 			current_token = tokens[token_index];
 			token_pos = 0;
 			while (*str != '\0')
@@ -54,12 +48,18 @@ char **strtow(char *str)
 			}
 		}
 		tokens[token_index] = NULL;
-
 		return (tokens);
 	}
-
 	return (NULL);
 }
+
+/**
+ * get_token_count - a function to count the number
+ * of tokens in a string
+ * @s: the string to check
+ *
+ * Return: the number of tokens counted
+ */
 
 int get_token_count(char *s)
 {
@@ -78,6 +78,14 @@ int get_token_count(char *s)
 
 	return (token_count);
 }
+
+/**
+ * get_token_length - a function that gets the length
+ * of a token (including null byte)
+ * @s: the string containing the token
+ *
+ * Return: the number of bytes in a token
+ */
 
 int get_token_length(char *s)
 {
