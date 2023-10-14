@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
@@ -22,6 +23,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	{
 		if (index <= 0)
 		{
+			printf("head: %d\n", (*head)->n);
 			temp = (*head)->next;
 			free(*head);
 			*head = temp;
@@ -39,6 +41,8 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 				pos++;
 			}
 
+			printf("pos: %d, cursor: %d\n", pos, cursor->n);
+
 			if (pos < index || cursor == NULL)
 				return (-1);
 
@@ -46,7 +50,8 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 			prev = cursor->prev;
 			free(cursor);
 			prev->next = post;
-			post->prev = prev;
+			if (post)
+				post->prev = prev;
 
 			return (1);
 		}
