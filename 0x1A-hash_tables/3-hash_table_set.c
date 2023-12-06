@@ -14,11 +14,12 @@ hash_node_t *create_hash_node(const char *key, const char *value)
 	hash_node_t *new_node = NULL;
 
 	new_node = (hash_node_t *)malloc(sizeof(hash_node_t));
-	new_node->key = (char *)malloc(strlen(key) + 1);
-	new_node->value = (char *)malloc(strlen(value) + 1);
 
 	if (!new_node)
 		return (NULL);
+
+	new_node->key = (char *)malloc(strlen(key) + 1);
+	new_node->value = (char *)malloc(strlen(value) + 1);
 
 	if (!new_node->key)
 	{
@@ -84,6 +85,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			temp_node = ht->array[index];
 			new_node->next = temp_node;
 			ht->array[index] = new_node;
+			free_hash_node(temp_node);
 		}
 	}
 	return (1);
