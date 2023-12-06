@@ -33,16 +33,3 @@ void print_hash_table(hash_table_t *table)
 		putchar('\n');
 	}
 }
-
-void free_hash_node(hash_node_t *node)
-{
-	if (node)
-	{
-		if (node->value)
-			free(node->value);
-		if (node->key)
-			free(node->key);
-
-		free(node);
-	}
-}

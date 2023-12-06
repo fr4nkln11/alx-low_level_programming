@@ -1,5 +1,30 @@
 #include "hash_tables.h"
 
+/**
+ * free_hash_node - a function that deletes a hash node
+ * @node: the node to free
+ *
+ * Return: nothing
+ */
+void free_hash_node(hash_node_t *node)
+{
+	if (node)
+	{
+		if (node->value)
+			free(node->value);
+		if (node->key)
+			free(node->key);
+
+		free(node);
+	}
+}
+
+/**
+ * hash_table_delete - a function that deletes a hash table.
+ * @ht: the hash table
+ *
+ * Return: nothing
+ */
 void hash_table_delete(hash_table_t *ht)
 {
 	if (ht)
