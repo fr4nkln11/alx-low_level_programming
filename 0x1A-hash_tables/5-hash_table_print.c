@@ -19,14 +19,14 @@ void hash_table_print(const hash_table_t *ht)
 		{
 			temp_node = ht->array[i];
 
-			if (item_count > 0)
-				printf(", ");
-
 			if (temp_node)
 			{
 				while (temp_node)
 				{
+					if (item_count > 0)
+						printf(", ");
 					printf("'%s': '%s'", temp_node->key, temp_node->value);
+					item_count++;
 					temp_node = temp_node->next;
 				}
 			}
