@@ -15,18 +15,20 @@ void print_hash_table(hash_table_t *table)
 
 		if (temp_node)
 		{
+			printf("[%lu] - ", i);
 			while (temp_node)
 			{
 				key = temp_node->key;
 				value = temp_node->value;
 
-				printf("[%lu]:[%s] ===> [%s]", i, key, value);
+				printf("{[%s] : [%s]} --> ", key, value);
 				temp_node = temp_node->next;
 			}
+			printf("NULL");
 		}
 		else
 		{
-			printf("[%lu]:[---] ===> [---]", i);
+			printf("[%lu] - {[-] : [-]}", i);
 		}
 		putchar('\n');
 	}
